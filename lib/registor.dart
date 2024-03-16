@@ -22,6 +22,7 @@ class _registorState extends State<registor> {
             Align(
               alignment: Alignment.center,
             ),
+
             Text(
               'Registration',
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
