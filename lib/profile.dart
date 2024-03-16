@@ -12,11 +12,10 @@ class _profilepageState extends State<profilepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.black,
-      body: Column(
+      body: const Column(
         children: [
           Align(
             alignment: Alignment.center,
@@ -31,7 +30,10 @@ class _profilepageState extends State<profilepage> {
             height: 24,
           ),
           Text('Gojo Stataro',
-              style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold, color: Colors.white)),
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white)),
           SizedBox(
             height: 18,
           ),

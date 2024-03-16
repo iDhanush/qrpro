@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qrpro/registor.dart';
+import 'package:qrpro/register.dart';
 
 import 'home.dart';
 
