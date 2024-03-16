@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'login.dart';
+
 class registor extends StatefulWidget {
   const registor({Key? key}) : super(key: key);
 
@@ -30,8 +32,16 @@ class _registorState extends State<registor> {
         },
         body: jsonEncode(
             {"name": name, "rollno": roll, "email": email, "password": pass}));
-    print('object');
-    print(resp.statusCode);
+    if (resp.statusCode == 200) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => loginpage(),
+          ));
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text((resp.body))));
+    }
   }
 
   @override
