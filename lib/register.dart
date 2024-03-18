@@ -150,7 +150,7 @@ class _registorState extends State<registor> {
                 //     ));
               },
               child: Text(
-                'REGISTOR',
+                'Register',
               ),
             ),
           ]),
