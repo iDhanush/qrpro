@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:qrpro/register.dart';
 
 import 'home.dart';
@@ -11,6 +14,30 @@ class loginpage extends StatefulWidget {
 }
 
 class _loginpageState extends State<loginpage> {
+  TextEditingController rollControl = TextEditingController();
+  TextEditingController passControl = TextEditingController();
+
+  void loginUser() async {
+    Uri uri = Uri.parse('https://scnner-web.onrender.com/api/login');
+    var resp = await http.post(uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(
+            {"rollno": rollControl.text, "password": passControl.text}));
+    print(resp.body);
+    if (resp.statusCode == 200) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => homepage(),
+          ));
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text((resp.body))));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +67,8 @@ class _loginpageState extends State<loginpage> {
                 height: 40,
               ),
               TextField(
+                controller: rollControl,
                 decoration: InputDecoration(
-
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -56,6 +83,7 @@ class _loginpageState extends State<loginpage> {
                 height: 25,
               ),
               TextField(
+                controller: passControl,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -78,8 +106,7 @@ class _loginpageState extends State<loginpage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(5)))),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => homepage()));
+                    loginUser();
                   },
                   child: const Text(
                     'Log In',

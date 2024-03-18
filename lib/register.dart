@@ -24,7 +24,6 @@ class _registorState extends State<registor> {
     String email = emailController.text;
     String pass = passController.text;
     print('object');
-
     Uri uri = Uri.parse('https://scnner-web.onrender.com/api/register');
     var resp = await http.post(uri,
         headers: <String, String>{
