@@ -142,12 +142,6 @@ class _registorState extends State<registor> {
               ),
               onPressed: () {
                 RegUser();
-
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => profilepage(),
-                //     ));
               },
               child: Text(
                 'Register',

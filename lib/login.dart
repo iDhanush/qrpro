@@ -136,7 +136,7 @@ class _loginpageState extends State<loginpage> {
                             builder: (context) => registor(),
                           ));
                     },
-                    child: Text('REGISTOR'),
+                    child: Text('REGISTER'),
                   ),
                 ],
               )
